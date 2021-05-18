@@ -36,7 +36,7 @@ class SR_Currency {
 	 * @param $id
 	 * @param int $scopeId 0 is Global
 	 */
-	public function __construct( $value = 0, $id = 0, $scopeId = 0 ) {
+	public function __construct( $value = 0, $id = 1, $scopeId = 0 ) {
 
 		global $wpdb;
 		$this->wpdb = $wpdb;
@@ -51,11 +51,21 @@ class SR_Currency {
 
 		// Query for global currency display format
 		if ($scopeId == 0) {
-			$options = get_option('solidres_currency');
-			$this->formatOptions['currency_format_pattern'] = $options['currency_format_pattern'] != '' ? $options['currency_format_pattern'] : 1;
-			$this->formatOptions['number_decimal_points'] = $options['number_decimal_points'] != '' ? $options['number_decimal_points'] : 2;
-			$this->formatOptions['currency_code_symbol'] = $options['currency_code_symbol'] != '' ? $options['currency_code_symbol'] : 'code';
-		} else { // Query for reservation asset currency display format
+            $options = get_option('solidres_currency');
+
+            if ($options != false) {
+                $this->formatOptions['currency_format_pattern'] = $options['currency_format_pattern'] != '' ? $options['currency_format_pattern'] : 1;
+                $this->formatOptions['number_decimal_points'] = $options['number_decimal_points'] != '' ? $options['number_decimal_points'] : 2;
+                $this->formatOptions['currency_code_symbol'] = $options['currency_code_symbol'] != '' ? $options['currency_code_symbol'] : 'code';
+
+            } else {
+                $this->formatOptions['currency_format_pattern'] = 1;
+                $this->formatOptions['number_decimal_points'] = 2;
+                $this->formatOptions['currency_code_symbol'] = 'code';
+
+            }
+        }
+		else { // Query for reservation asset currency display format
 
 		}
 

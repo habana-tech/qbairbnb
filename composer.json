@@ -34,7 +34,8 @@
     "roots/wordpress": "5.7",
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.0.0",
-    "rareloop/lumberjack-core": "^5.0"
+    "rareloop/lumberjack-core": "^5.0",
+    "symfony/error-handler": "^5.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.5.8",

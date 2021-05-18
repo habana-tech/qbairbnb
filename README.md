@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <strong>A modern WordPress stack</strong>
+  <strong>A modern way to manage your houses and room for rent in Cuba</strong>
   <br />
   Built with ❤️
 </p>

@@ -10,6 +10,10 @@
 
 use Roots\WPConfig\Config;
 use function Env\env;
+use Symfony\Component\ErrorHandler\Debug;
+use Symfony\Component\ErrorHandler\ErrorHandler;
+use Symfony\Component\ErrorHandler\DebugClassLoader;
+
 
 /**
  * Directory containing all of the site's files
@@ -35,6 +39,10 @@ if (file_exists($root_dir . '/.env')) {
     if (!env('DATABASE_URL')) {
         $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD']);
     }
+}
+
+if (env('WP_ENV') === 'development') {
+    Debug::enable();
 }
 
 /**
