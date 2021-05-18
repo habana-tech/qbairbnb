@@ -25,7 +25,7 @@ function sr_edit_category( $id ) {
 		if ( $action == 'edit' ) {
 			$check_slug = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sr_categories WHERE slug = %s AND id != %d", $sr_form_data->slug, $id ) );
 		} else {
-			$check_slug = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sr_categories WHERE slug = %s", $sr_form_data->alias ) );
+			$check_slug = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}sr_categories WHERE slug = %s", $sr_form_data->slug ) );
 		}
 
 		if ( $check_slug <= 0 ) {
