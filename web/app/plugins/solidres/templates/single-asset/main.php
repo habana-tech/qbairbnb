@@ -12,7 +12,6 @@ if (!defined('ABSPATH'))
 {
 	exit;
 }
-
 if ( $asset->state != 1 ) :
 	return;
 endif;

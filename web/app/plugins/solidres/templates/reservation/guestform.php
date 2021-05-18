@@ -64,9 +64,12 @@ $is_front_end = solidres()->is_request( 'frontend' );
 						</label>
 
 						<?php echo SR_Helper::get_generic_list(
-							$display_data['customer_titles'],
-							array( 'name' => 'srform[customer_title]', 'class' => 'form-control input-block-level twelve columns' ),
-							$display_data['reservation_details_guest']["customer_title"]
+							$display_data['customer_titles'] ?? null,
+							[
+							    'name' => 'srform[customer_title]',
+                                'class' => 'form-control input-block-level twelve columns'
+                            ],
+							$display_data['reservation_details_guest']["customer_title"]  ?? null
 						) ?>
 					</div>
 

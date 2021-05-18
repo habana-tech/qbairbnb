@@ -183,11 +183,15 @@ function sr_edit_room_type( $id ) {
 					$query_tariff_details = 'UPDATE ' . $wpdb->prefix . 'sr_tariff_details
 					SET price = CASE w_day ' . $values_convert . '
 					END
-					WHERE tariff_id = ' . $get_tariffs_info[0]->id;
+					WHERE tariff_id = %s ';
+
+
+                    $wpdb->query( $wpdb->prepare( $query_tariff_details,  $get_tariffs_info[0]->id ) );
 				} else {
-					$query_tariff_details = "INSERT INTO {$wpdb->prefix}sr_tariff_details (`tariff_id`, `price`, `w_day`, `guest_type`, `from_age`, `to_age`) VALUES $values_convert";
+					$query_tariff_details = "INSERT INTO {$wpdb->prefix}%s (`tariff_id`, `price`, `w_day`, `guest_type`, `from_age`, `to_age`) VALUES $values_convert";
+                    $wpdb->query( $wpdb->prepare( $query_tariff_details, 'sr_tariff_details' ) );
 				}
-				$wpdb->query( $wpdb->prepare( $query_tariff_details, 10 ) );
+
 
 				$custom_field_data_update = array();
 				foreach ( $sr_form_data->customfields as $keys => $values ) {

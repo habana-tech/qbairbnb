@@ -148,7 +148,7 @@ endif;
 					<?php
 					$count = 1;
 					foreach ( $room_types as $room_type ) :
-						if (!is_array($room_type->params)) : 
+						if (!is_array($room_type->params)) :
 							$room_type->params = json_decode( $room_type->params, true );
 						endif;
 
@@ -202,10 +202,11 @@ endif;
 												foreach ( $room_type->media as $media ) :
 													$active     = ( $count_media == 0 ) ? 'active' : '';
 													$media_attr = wp_get_attachment_image_src( $media->media_id, 'full' );
+
 													?>
 													<div class="item <?php echo esc_attr( $active ) ?>">
 														<a class="room_type_details sr-photo-<?php echo (int) $room_type->id ?>"
-														   href="<?php echo esc_url( $media_attr[0] ); ?>">
+														   href="<?php echo esc_url( $media_attr[0] ?? null ); ?>">
 															<?php echo wp_get_attachment_image( $media->media_id, array( 300, 250 ) ); ?>
 														</a>
 													</div>

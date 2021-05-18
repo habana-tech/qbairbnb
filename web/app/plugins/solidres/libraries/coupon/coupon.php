@@ -183,12 +183,7 @@ class SR_Coupon {
 				$couponId
 			)
 		);
-
-		if ($count > 0) {
-			$response = true;
-		}
-
-		return $response;
+        return $count > 0 ? true : false;
 	}
 
 	public function get_customer_group_id( $user_id )

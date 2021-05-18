@@ -201,7 +201,7 @@ function sr_options()
                         <td>
                             <select name="solidres_plugin[default_gallery]" id="srform_default_gallery">
 								<?php
-								$selected = $options['default_gallery'];
+								$selected = $options['default_gallery'] ?? null;
 								$p        = '';
 								$r        = '';
 								foreach ($default_gallery_options as $option)
@@ -229,7 +229,7 @@ function sr_options()
                             <select name="solidres_plugin[availability_calendar_enable]"
                                     id="srform_availability_calendar_enable">
 								<?php
-								$selected = $options['availability_calendar_enable'];
+								$selected = $options['availability_calendar_enable'] ?? null;
 								$p        = '';
 								$r        = '';
 								foreach ($yes_no_options as $option)
@@ -316,7 +316,7 @@ function sr_options()
                         <td>
                             <select name="solidres_plugin[show_price_with_tax]" id="srform_show_price_with_tax">
 								<?php
-								$selected = $options['show_price_with_tax'];
+								$selected = $options['show_price_with_tax'] ?? null;
 								$p        = '';
 								$r        = '';
 								foreach ($yes_no_options as $option)
@@ -345,7 +345,7 @@ function sr_options()
                             <select name="solidres_plugin[default_reservation_state]"
                                     id="srform_default_reservation_state">
 								<?php
-								$selected = $options['default_reservation_state'];
+								$selected = $options['default_reservation_state'] ?? null;
 								$p        = '';
 								$r        = '';
 								foreach ($reservation_state as $option)
@@ -691,7 +691,7 @@ function sr_options()
                         <td>
                             <select name="solidres_currency[default_currency_id]" id="srform_default_currency">
 								<?php
-								$selected = $options['default_currency_id'];
+								$selected = $options['default_currency_id'] ?? null;
 								$p        = '';
 								$r        = '';
 								if (!empty ($currencies_options_array))
@@ -721,7 +721,7 @@ function sr_options()
                             <select name="solidres_currency[currency_format_pattern]"
                                     id="srform_currency_format_pattern">
 								<?php
-								$selected = $options['currency_format_pattern'];
+								$selected = $options['currency_format_pattern'] ?? null;
 								$p        = '';
 								$r        = '';
 								foreach ($curency_format_pattern_options as $option)
@@ -758,7 +758,7 @@ function sr_options()
                         <td>
                             <select name="solidres_currency[currency_code_symbol]" id="srform_currency_code_symbol">
 								<?php
-								$selected = $options['currency_code_symbol'];
+								$selected = $options['currency_code_symbol']  ?? null;
 								$p        = '';
 								$r        = '';
 								foreach ($code_or_symbol_options as $option)
@@ -827,7 +827,7 @@ function sr_options()
                         <td>
                             <select name="solidres_invoice[enable_pdf_attachment]" id="srform_enable_pdf_attachment">
 								<?php
-								$selected = $options['enable_pdf_attachment'];
+								$selected = $options['enable_pdf_attachment'] ?? null;
 								$p        = '';
 								$r        = '';
 								foreach ($yes_no_options as $option)
@@ -849,7 +849,9 @@ function sr_options()
                     </tr>
                     <tr valign="top">
                         <th scope="row"><label for="solidres_invoice_number_prefix"
-                                               title="<?php _e('Custom Invoice number prefix with tags : [dd] show day of month, [mm] show month of year [yy] show year. You can also use ' - ' symbol or specify your own string prefix. Default is re ', 'solidres'); ?>"><?php _e('Invoice number prefix format', 'solidres'); ?></label>
+                                               title="<?php _e('Custom Invoice number prefix with tags : [dd] show day of month, [mm] show month of year [yy] show year. You can also use \' - \' symbol or specify your own string prefix. Default is re ', 'solidres'); ?>">
+                                <?php _e('Invoice number prefix format', 'solidres'); ?>
+                            </label>
                         </th>
                         <td>
                             <input id="solidres_invoice_number_prefix" class="regular-text" type="text"
@@ -864,7 +866,7 @@ function sr_options()
                         <td>
                             <input id="solidres_invoice_number_prefix_override" class="regular-text" type="text"
                                    name="solidres_invoice[solidres_invoice_number_prefix_override]"
-                                   value="<?php esc_attr_e($options['solidres_invoice_number_prefix_override']); ?>"/>
+                                   value="<?php esc_attr_e($options['solidres_invoice_number_prefix_override'] ?? null); ?>"/>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -894,7 +896,7 @@ function sr_options()
                         <td>
                             <input id="solidres_invoice_number_override" class="regular-text" type="text"
                                    name="solidres_invoice[solidres_invoice_number_override]"
-                                   value="<?php esc_attr_e($options['solidres_invoice_number_override']); ?>"/>
+                                   value="<?php esc_attr_e($options['solidres_invoice_number_override'] ?? null); ?>"/>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -904,7 +906,7 @@ function sr_options()
                         <td>
                             <input id="solidres_invoice_logo_image_path" class="regular-text" type="text"
                                    name="solidres_invoice[solidres_invoice_logo_image_path]"
-                                   value="<?php esc_attr_e($options['solidres_invoice_logo_image_path']); ?>"/>
+                                   value="<?php esc_attr_e($options['solidres_invoice_logo_image_path'] ?? null); ?>"/>
                         </td>
                     </tr>
                     <tr style="border-bottom: 1px solid #ddd; ">
@@ -1231,9 +1233,9 @@ function sr_options()
                         </th>
                         <td>
                             <select name="solidres_tools[enable_template_debug]">
-                                <option <?php echo $options['enable_template_debug'] == 0 ? 'selected' : '' ?>
+                                <option <?php echo $options['enable_template_debug']  ?? null == 0 ? 'selected' : '' ?>
                                         value="0"><?php _e('Disable', 'solidres') ?></option>
-                                <option <?php echo $options['enable_template_debug'] == 1 ? 'selected' : '' ?>
+                                <option <?php echo $options['enable_template_debug']  ?? null == 1 ? 'selected' : '' ?>
                                         value="1"><?php _e('Enable', 'solidres') ?></option>
                             </select>
                         </td>
