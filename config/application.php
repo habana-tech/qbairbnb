@@ -84,6 +84,12 @@ if (env('DATABASE_URL')) {
     Config::define('DB_HOST', isset($dsn->port) ? "{$dsn->host}:{$dsn->port}" : $dsn->host);
 }
 
+
+if (env('MAILER_DSN')) {
+//    $dsn = (object) parse_url(env('MAILER_DSN'));
+    Config::define('MAILER_DSN', env('MAILER_DSN'));
+}
+
 /**
  * Authentication Unique Keys and Salts
  */

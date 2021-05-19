@@ -109,7 +109,7 @@ $widthList = array(
 
 						// Html for children ages
 						// Restructure to match front end
-						if (is_array($currentRoomIndex['other_info'])) :
+						if (is_array($currentRoomIndex['other_info'] ?? null)) :
 							foreach ($currentRoomIndex['other_info'] as $info) :
 								if (substr($info->key, 0, 5) == 'child') :
 									$currentRoomIndex['children_ages'][] = $info->value;
@@ -235,7 +235,7 @@ $widthList = array(
 										<input type="text"
 										       name="srform[room_types][<?php echo $roomType->id ?>][<?php echo $arrayHolder ?>][<?php echo $room->id ?>][guest_fullname]"
 										       class="twelve columns guest_fullname" placeholder="<?php _e( "Guest name", 'solidres' ) ?>"
-										       value="<?php echo $currentRoomIndex['guest_fullname'] ?>"
+										       value="<?php echo $currentRoomIndex['guest_fullname'] ?? null; ?>"
 											<?php echo $room->isReservedForThisReservation ? '' : 'disabled' ?>
 										/>
 									</div>
@@ -402,8 +402,8 @@ $widthList = array(
 		</div>
 	</div>
 	<input type="hidden" name="srform[next_step]" value="guestinfo"/>
-	<input type="hidden" name="srform[raid]" value="<?php echo $display_data['raid'] ?>" />
-	<input type="hidden" name="srform[is_guest_making_reservation]" value="<?php echo $display_data['is_guest_making_reservation'] ?>" />
+	<input type="hidden" name="srform[raid]" value="<?php echo $display_data['raid'] ?? null ?>" />
+	<input type="hidden" name="srform[is_guest_making_reservation]" value="<?php echo $display_data['is_guest_making_reservation'] ?? null ?>" />
 	<input type="hidden" name="security" value="<?php echo wp_create_nonce( 'process-reservation' ) ?>" />
 	<input type="hidden" name="action" value="solidres_reservation_process" />
 	<input type="hidden" name="step" value="room" />

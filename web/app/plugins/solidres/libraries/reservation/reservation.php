@@ -325,11 +325,11 @@ class SR_Reservation {
 		// 3 : Closed
 		// 4 : Cancelled
 		// 5 : Confirmed
-		$result = $this->wpdb->get_results( "SELECT checkin, checkout 
-			FROM {$this->wpdb->prefix}sr_reservations as res 
-			INNER JOIN {$this->wpdb->prefix}sr_reservation_room_xref as room ON res.id = room.reservation_id AND room.room_id = $roomId 
-			WHERE res.checkout >= '" . date( 'Y-m-d' ) . "' 
-			AND res.state = 1 or res.state = 5 
+		$result = $this->wpdb->get_results( "SELECT checkin, checkout
+			FROM {$this->wpdb->prefix}sr_reservations as res
+			INNER JOIN {$this->wpdb->prefix}sr_reservation_room_xref as room ON res.id = room.reservation_id AND room.room_id = $roomId
+			WHERE res.checkout >= '" . date( 'Y-m-d' ) . "'
+			AND res.state = 1 or res.state = 5
 			ORDER BY res.checkin" );
 
 		if ( is_array( $result ) ) {
@@ -768,7 +768,7 @@ class SR_Reservation {
 			}
 		}
 		$countries  = SR_Helper::render_list_country( $selected_country_id );
-		$geo_states = $selected_country_id > 0 ? SR_Helper::render_list_geo_state( $selected_country_id, $reservation_details_guest['customer_geo_state_id'] ) : '';
+		$geo_states = $selected_country_id > 0 ? SR_Helper::render_list_geo_state( $selected_country_id, $reservation_details_guest['customer_geo_state_id'] ?? null ) : '';
 		$solidres_payment_plugins = solidres()->payment_gateways();
 
 		$display_data = array(

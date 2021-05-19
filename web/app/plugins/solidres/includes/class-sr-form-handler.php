@@ -31,6 +31,7 @@ class SR_Form_Handler
             $context = 'com_solidres.reservation.process';
             $is_guest_making_reservation = solidres()->session->get('sr_is_guest_making_reservation');
 
+//            self::send_reservation_email($solidres_reservation, true);
             if (!$is_guest_making_reservation) {
                 // Get overridden cost
                 $overridden_cost = isset($_POST[ 'srform' ]) ?  $_POST[ 'srform' ] : array();
@@ -228,7 +229,8 @@ class SR_Form_Handler
         $tzoffset             = $tzoffset == '' ? 'UTC' : $tzoffset;
         $timezone             = new DateTimeZone($tzoffset);
         $dateFormat           = get_option('date_format', 'd-m-Y');
-        $saved_reservation_id   = solidres()->session->get('sr_saved_reservation_id');
+
+        $saved_reservation_id   = solidres()->session != null ? solidres()->session->get('sr_saved_reservation_id') : null;
 
         // Prevent duplicate email sending issue
         if (empty($saved_reservation_id)) {
@@ -373,7 +375,24 @@ class SR_Form_Handler
         $headers[] = "From: {$asset->name}  <{$asset->email}>";
         add_filter('wp_mail_content_type', 'solidres_set_html_content_type');
         $attachment = array( $attachment_pdf );
-        wp_mail($customerEmail, $subject[ $customerEmail ], $body[ $customerEmail ], $headers, $attachment);
+
+        $transport = Symfony\Component\Mailer\Transport::fromDsn(Roots\WPConfig\Config::get('MAILER_DSN'));
+        $mailer = new Symfony\Component\Mailer\Mailer($transport);
+
+        $email = (new \Symfony\Component\Mime\Email())
+            ->from("{$asset->name}  <{$asset->email}>")
+            ->to($customerEmail)
+            ->subject($subject[ $customerEmail ])
+            ->html($body[ $customerEmail ]);
+        foreach ($attachment as $attach) {
+            if(!empty($path))
+                $email->attachFromPath($attach);
+        }
+
+        $mailer->send($email);
+
+
+//        wp_mail($customerEmail, $subject[ $customerEmail ], $body[ $customerEmail ], $headers, $attachment);
         remove_filter('wp_mail_content_type', 'solidres_set_html_content_type');
 
         // Send to the hotel owner
