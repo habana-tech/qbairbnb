@@ -1,5 +1,5 @@
 <head>
-    <title>{{ function('wp_title') }}</title>
+    <title>{{ site.name }} {{ function('wp_title') }}</title>
     <meta charset="{{ site.charset }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
@@ -8,5 +8,7 @@
 
 
     <link rel="stylesheet" href="/app/themes/lumberjack/build/app.css">
+<!--    header function start -->
     {{ function('wp_head') }}
+<!--    header function end -->
 </head>

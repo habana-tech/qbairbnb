@@ -46,8 +46,8 @@ return [
      */
     'logs' => [
         'enabled' => true,
-        'path' => 'log.log',
-        'level' => Monolog\Logger::ERROR,
+        'path' => '../var/logs/log.log',
+        'level' => Monolog\Logger::DEBUG,
     ],
 
     'themeSupport' => [

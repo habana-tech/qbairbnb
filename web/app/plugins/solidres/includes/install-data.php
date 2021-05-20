@@ -712,7 +712,8 @@ function solidres_install_data(){
 			(446, 102, 'Sistan va Baluchestan', 'SB', 'SBA', 1),
 			(447, 102, 'Tehran', 'TE', 'TEH', 1),
 			(448, 102, 'Yazd', 'YA', 'YAZ', 1),
-			(449, 102, 'Zanjan', 'ZA', 'ZAN', 1);
+			(449, 102, 'Zanjan', 'ZA', 'ZAN', 1),
+			(450, 55, 'Havana', 'HA', 'HAV', 1);
 		" );
 	}
 }
