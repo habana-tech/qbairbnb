@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://roots.io/bedrock/">
-    <img alt="Qbairbnb" src="https://habana-tech.github.io/qbairbnb/img/logo.svg" height="100">
+    <img alt="Qbairbnb" src="https://raw.githubusercontent.com/habana-tech/qbairbnb/main/docs/img/logo.svg" height="100">
   </a>
 </p>
 
@@ -18,7 +18,7 @@
 <p align="center">
   <strong>A modern way to manage your houses and room for rent in Cuba</strong>
   <br />
-  Built with ❤️
+  Built with ❤️ and a lot of open-source awesome projects
 </p>
 
 <p align="center">
