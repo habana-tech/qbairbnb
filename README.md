@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://roots.io/bedrock/">
+  <a href="https://habana-tech.github.io/qbairbnb/">
     <img alt="Qbairbnb" src="https://raw.githubusercontent.com/habana-tech/qbairbnb/main/docs/img/logo.svg" height="100">
   </a>
 </p>
