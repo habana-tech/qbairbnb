@@ -46,7 +46,7 @@ return [
      */
     'logs' => [
         'enabled' => true,
-        'path' => false,
+        'path' => 'log.log',
         'level' => Monolog\Logger::ERROR,
     ],
 
