@@ -8,4 +8,4 @@ use Rareloop\Lumberjack\Facades\Router;
      return new HtmlResponse('<h1>Hello World!!</h1>');
  });
 
- Router::get('test/{name}/', 'TestController@show');
+ Router::get('asset/{slug}/', 'AssetController@show');

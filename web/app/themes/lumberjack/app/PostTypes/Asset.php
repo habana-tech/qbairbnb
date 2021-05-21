@@ -34,6 +34,9 @@ class Asset extends Post
                 'add_new_item' => __('Add New Asset Page'),
             ],
             'public' => true,
+            'show_in_rest' => true,
+            'supports' => array('editor'),
+            'rewrite'     => array( 'slug' => 'assets' )
         ];
     }
 }
